@@ -3,36 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Validation</title>
+    <title>Enhanced Form Validation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Interactive Form Validation</h1>
-        <form id="validationForm">
-            <div class="form-group">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" required>
-                <span class="error" id="nameError"></span>
+    <div class="background">
+        <div class="container">
+            <header class="header">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="header-text">
+                    <h2>SecureForm</h2>
+                    <p>Validate your details with ease</p>
+                </div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </header>
+            <h1><i class="fas fa-user-check"></i> Interactive Form Validation</h1>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <span class="error" id="emailError"></span>
+            <div class="form-container">
+                <form id="validationForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required aria-describedby="nameError">
+                        <label for="name"><i class="fas fa-user"></i> Full Name:</label>
+                        <span class="error" id="nameError" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required aria-describedby="emailError">
+                        <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                        <span class="error" id="emailError" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" placeholder="Create a strong password" required aria-describedby="passwordError">
+                        <label for="password"><i class="fas fa-lock"></i> Password:</label>
+                        <div class="password-strength">
+                            <div id="strengthBar" class="strength-bar"></div>
+                            <span id="strengthText">Weak</span>
+                        </div>
+                        <span class="error" id="passwordError" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required aria-describedby="confirmError">
+                        <label for="confirmPassword"><i class="fas fa-lock"></i> Confirm Password:</label>
+                        <span class="error" id="confirmError" role="alert"></span>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" id="submitBtn"><i class="fas fa-paper-plane"></i> Submit</button>
+                        <button type="button" id="resetBtn" class="reset-btn"><i class="fas fa-undo"></i> Reset</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <span class="error" id="passwordError"></span>
-            </div>
-            <div class="form-group">
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
-                <span class="error" id="confirmError"></span>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
-        <div id="successMessage" class="success"></div>
+            <div id="successMessage" class="success" aria-live="polite"></div>
+        </div>
+        <footer class="footer">
+            <p>&copy; 2023 SecureForm. Built with <i class="fas fa-heart"></i> for security.</p>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>
